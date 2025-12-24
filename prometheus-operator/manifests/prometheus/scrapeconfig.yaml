@@ -1,0 +1,14 @@
+apiVersion: monitoring.coreos.com/v1alpha1
+kind: ScrapeConfig
+metadata:
+  name: local-operator
+  namespace: default
+  labels:
+    app.kubernetes.io/name: prometheus
+    prometheus: prometheus
+spec:
+  staticConfigs:
+  - targets:
+    - host.docker.internal:8080
+  metricsPath: /metrics
+  scrapeInterval: 15s
